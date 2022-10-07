@@ -1,0 +1,8 @@
+__pycache__
+.env
+*port
+LICENSE
+README.md
+*build
+build
+run
