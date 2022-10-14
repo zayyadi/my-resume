@@ -1,15 +1,12 @@
 import os
-from pathlib import Path
 
-import dj_database_url
+# from pathlib import Path
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-
-DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
 
@@ -43,7 +40,7 @@ ROOT_URLCONF = "portfolio.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -58,18 +55,6 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = "portfolio.wsgi.application"
-
-
-DATABASES = {
-    "default": {
-        "ENGINE": os.environ.get("DATABASE_ENGINE"),
-        "NAME": os.environ.get("POSTGRES_NAME"),
-        "USER": os.environ.get("POSTGRES_USER"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-        "HOST": os.environ.get("POSTGRES_HOST"),
-        "PORT": os.environ.get("POSTGRES_PORT"),
-    }
-}
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -99,21 +84,16 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES["default"].update(db_from_env)
 
 
 # django_heroku.settings(locals())
