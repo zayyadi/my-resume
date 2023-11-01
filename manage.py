@@ -22,5 +22,5 @@ def main():
 
 
 if __name__ == "__main__":
-    dotenv.read_dotenv()
+    dotenv.read_dotenv('asiri.env')
     main()

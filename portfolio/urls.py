@@ -7,7 +7,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path(os.environ.get("ADMIN_INTERNAL_URL"), admin.site.urls),
-    path("", include("app.urls")),
+    path("/", include("app.urls")),
 ]
 
 if settings.DEBUG:

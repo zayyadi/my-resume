@@ -12,9 +12,9 @@ from django.core.wsgi import get_wsgi_application
 
 # dotenv.read_dotenv(str(ENV_FILE_PATH))
 
-dotenv.read_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
+dotenv.read_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), "asiri.env"))
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "portfolio.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "portfolio.settings.prod")
 
 application = get_wsgi_application()
